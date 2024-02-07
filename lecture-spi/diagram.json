@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "author": "Michael Kovalevskiy",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-devkit-v1",
+      "id": "esp",
+      "top": -2.72,
+      "left": -62.4,
+      "attrs": { "builder": "esp-idf" }
+    },
+    {
+      "type": "wokwi-max7219-matrix",
+      "id": "matrix1",
+      "top": 67.8,
+      "left": -226.59,
+      "attrs": { "chain": "1" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "matrix1:DIN", "esp:D23", "green", [ "h0" ] ],
+    [ "matrix1:CS", "esp:D5", "green", [ "h0" ] ],
+    [ "matrix1:CLK", "esp:D18", "green", [ "h0" ] ]
+  ],
+  "dependencies": {},
+  "serialMonitor": {
+    "display": "terminal",
+    "newline": "lf",
+    "convertEol": false
+  }
+}

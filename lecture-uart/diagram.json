@@ -1,0 +1,20 @@
+{
+    "version": 1,
+    "author": "asd",
+    "editor": "wokwi",
+    "parts": [
+      { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": 0, "left": 180, "attrs": {} }
+    ],
+    "connections": [
+      [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+      [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+      [ "led1:A", "esp:D13", "red", [ "v0" ] ],
+      [ "led1:C", "esp:GND.2", "black", [ "v0" ] ]
+    ],
+    "dependencies": {},
+    "serialMonitor": {
+      "display": "terminal",
+      "newline": "lf",
+      "convertEol": false
+    }
+  }
