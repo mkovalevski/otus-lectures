@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "esp_bt.h": "c",
+        "esp_hidh_bluedroid.h": "c",
+        "esp_gap_bt_api.h": "c",
+        "esp_bt_main.h": "c",
+        "array": "c",
+        "string": "c",
+        "string_view": "c"
+    }
+}
