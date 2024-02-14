@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "author": "Michael Kovalevskiy",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-devkit-v1",
+      "id": "esp",
+      "top": -165.92,
+      "left": 216,
+      "attrs": { "builder": "esp-idf" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn-red",
+      "top": 75.34,
+      "left": -316.67,
+      "attrs": { "color": "red", "bounce": "0" }
+    },
+    { "type": "wokwi-resistor", "id": "r1", "top": 8.98, "left": -231.36, "attrs": {} },
+    {
+      "type": "wokwi-max7219-matrix",
+      "id": "matrix1",
+      "top": -124.2,
+      "left": -166.57,
+      "attrs": { "chain": "1" }
+    },
+    { "type": "wokwi-mpu6050", "id": "imu1", "top": -293.78, "left": 424.72, "attrs": {} },
+    { "type": "wokwi-vcc", "id": "vcc1", "top": -392.84, "left": 595.2, "attrs": {} },
+    { "type": "wokwi-gnd", "id": "gnd1", "top": -230.4, "left": 594.6, "attrs": {} }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "matrix1:CS", "esp:D5", "white", [ "h0" ] ],
+    [ "matrix1:CLK", "esp:D18", "cyan", [ "h0" ] ],
+    [ "matrix1:DIN", "esp:D23", "orange", [ "h0" ] ],
+    [ "matrix1:DOUT", "esp:D19", "purple", [ "h0" ] ],
+    [ "esp:D22", "imu1:SCL", "white", [ "h0" ] ],
+    [ "imu1:SDA", "esp:D21", "orange", [ "v0" ] ],
+    [ "imu1:VCC", "vcc1:VCC", "red", [ "v0" ] ],
+    [ "imu1:GND", "gnd1:GND", "black", [ "v0" ] ],
+    [ "btn-red:2.r", "esp:GND.2", "black", [ "v0" ] ],
+    [ "btn-red:1.r", "esp:D13", "yellow", [ "h0" ] ],
+    [ "r1:1", "btn-red:1.r", "green", [ "v-1", "h-28" ] ],
+    [ "r1:2", "esp:VIN", "green", [ "v0" ] ]
+  ],
+  "serialMonitor": { "display": "terminal", "newline": "lf", "convertEol": false },
+  "dependencies": {}
+}
